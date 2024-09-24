@@ -8,7 +8,7 @@ import {
 @Injectable()
 export class AwsLocationService {
   private client: LocationClient;
-  private placeIndexName = 'MyPlaceIndex'; // Replace with your Place Index name
+  private placeIndexName = 'MyPlaceIndex';
 
   constructor() {
     this.client = new LocationClient({ region: process.env.AWS_REGION });
@@ -18,8 +18,8 @@ export class AwsLocationService {
     const params: SearchPlaceIndexForTextCommandInput = {
       IndexName: this.placeIndexName,
       Text: query,
-      FilterCountries: ['USA'], // Limit results to USA
-      MaxResults: 5,            // Adjust as needed
+      FilterCountries: ['USA'],
+      MaxResults: 5,
     };
 
     try {
@@ -36,8 +36,8 @@ export class AwsLocationService {
     const params: SearchPlaceIndexForTextCommandInput = {
       IndexName: this.placeIndexName,
       Text: zipCode,
-      FilterCountries: ['USA'], // Ensure search is within the USA
-      MaxResults: 1,            // We only need one result
+      FilterCountries: ['USA'],
+      MaxResults: 1,
     };
 
     try {
